@@ -3,23 +3,46 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Light theme variables */
+  --color-text: #213547;
+  --color-background: #ffffff;
+  --color-button-bg: #f9f9f9;
+  --color-button-text: #213547;
+  --color-button-border: #e0e0e0;
+  --color-link: #646cff;
+  --color-link-hover: #747bff;
+  --color-read-the-docs: #888;
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  --color-text: rgba(255, 255, 255, 0.87);
+  --color-background: #242424;
+  --color-button-bg: #3a3a3a;
+  --color-button-text: #ffffff;
+  --color-button-border: #555555;
+  --color-link: #646cff;
+  --color-link-hover: #535bf2;
+  --color-read-the-docs: #888;
+}
+
+:root {
+  color: var(--color-text);
+  background-color: var(--color-background);
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--color-link);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--color-link-hover);
 }
 
 body {
@@ -60,37 +83,55 @@ h1 {
 }
 
 .read-the-docs {
-  color: #888;
+  color: var(--color-read-the-docs);
 }
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid var(--color-button-border);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.25s ease;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--color-link);
+  background-color: var(--color-link);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Theme switcher button styles */
+.theme-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  border: 2px solid var(--color-button-border);
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+  transition: all 0.25s ease;
+}
+.theme-switcher:hover {
+  border-color: var(--color-link);
+  background-color: var(--color-link);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
